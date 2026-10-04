@@ -1,0 +1,2600 @@
+<title>Lucknow Studio STR Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: field-report — sticky section index on the left, single reading column; verdict first, evidence after */
+:root{
+  --bg:#f4f5f2; --surface:#ffffff; --fg:#1b2130; --muted:#5b6475; --line:#d9dce3;
+  --accent:#2c3f8c; --brass:#94691a; --soft:#e8ebf5;
+  --good:#1f7a4a; --warn:#a2610c; --bad:#b23a32;
+  --display:"Rozha One", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11151c; --surface:#181d26; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2b3240;
+  --accent:#9fb0f5; --brass:#d7ad5a; --soft:#1f2638;
+  --good:#5cc48b; --warn:#e3a14a; --bad:#ef7a70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151c; --surface:#181d26; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2b3240;
+  --accent:#9fb0f5; --brass:#d7ad5a; --soft:#1f2638;
+  --good:#5cc48b; --warn:#e3a14a; --bad:#ef7a70; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font:15.5px/1.6 var(--body);margin:0}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+header.hero{padding-block:48px 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+h1{font:400 clamp(34px,6vw,58px)/1.05 var(--display);margin:10px 0 14px;text-wrap:balance;letter-spacing:-.005em}
+.lede{max-width:68ch;color:var(--muted);font-size:17px;margin:0}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin-top:28px}
+.pick{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pick .k{font:500 11.5px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pick .v{font:400 22px/1.2 var(--display)}
+.pick .s{font-size:13.5px;color:var(--muted)}
+.nums{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-variant-numeric:tabular-nums}
+.nums div{display:flex;flex-direction:column;min-width:0}
+.nums b{font:500 20px/1.2 var(--mono)}
+.nums span{font-size:12.5px;color:var(--muted)}
+.stamp{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:6px 12px;border:1.5px solid var(--warn);color:var(--warn);border-radius:3px;font:600 13px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);overflow:auto;font-size:13px}
+nav.toc .k{font:500 11px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line)}
+nav.toc a{display:block;padding:4px 10px;color:var(--muted);text-decoration:none;line-height:1.35}
+nav.toc a:hover{color:var(--fg);background:var(--soft)}
+main{min-width:0}
+main h2{font:400 28px/1.2 var(--display);margin:52px 0 14px;padding-top:14px;border-top:1px solid var(--line);text-wrap:balance;scroll-margin-top:16px}
+main h2:first-child{margin-top:0;border-top:0;padding-top:0}
+main h3{font:600 17px/1.35 var(--body);margin:30px 0 10px;scroll-margin-top:16px}
+main p,main li{max-width:72ch}
+main ul,main ol{padding-left:1.3em}
+main li{margin:4px 0}
+main hr{display:none}
+blockquote{margin:16px 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+blockquote h3{font:400 22px/1.2 var(--display);margin:0 0 12px}
+blockquote p{margin:8px 0}
+.tw{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11.5px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--soft);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td{min-width:90px}
+td:first-child{min-width:140px}
+pre{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;font:12.5px/1.5 var(--mono)}
+code{font-family:var(--mono);font-size:.92em}
+.cf{display:inline-block;font:600 10.5px/1 var(--mono);padding:3px 5px;border-radius:3px;border:1px solid currentColor;vertical-align:1px;letter-spacing:.04em}
+.cf-h{color:var(--good)}.cf-m{color:var(--warn)}.cf-l{color:var(--bad)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin-top:14px;align-items:center}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media (max-width:900px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:8px}
+  nav.toc{position:static;max-height:none;border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--surface)}
+  nav.toc ol{border-left:0}
+  header.hero{padding-block:28px 22px}
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Short-term rental field report · Lucknow, Uttar Pradesh · 4 Oct 2026</div>
+    <h1>Where to run a studio Airbnb in Lucknow</h1>
+    <p class="lede">A micro-market study of 350–650 sq ft studios for 2026–27. It ranks 10 pockets, tests buying against renting, and ends with a brief you can hand to a broker.</p>
+
+    <div class="verdict">
+      <div class="pick"><span class="k">Best overall</span><span class="v">Vibhuti Khand core</span><span class="s">1 km around DLF MyPad, Vibhuti Khand Rd 6, bounded by Summit Building, One Awadh Center, IGP and Gomti Nagar rly stn</span></div>
+      <div class="pick"><span class="k">Best occupancy</span><span class="v">Medanta–Lulu pocket</span><span class="s">Sushant Golf City Sec A/B and Ansal API, within 1.5 km of Medanta Hospital on Amar Shaheed Path</span></div>
+      <div class="pick"><span class="k">Best value</span><span class="v">Indira Nagar metro belt</span><span class="s">Within 600 m of Munshi Pulia, Indira Nagar or Bhootnath metro, Sectors 11–21</span></div>
+      <div class="pick"><span class="k">Avoid</span><span class="v">Omaxe Hazratganj tower</span><span class="s">10+ studio listings already competing at ₹1,900–3,000 a night</span></div>
+    </div>
+
+    <div class="nums">
+      <div><b>₹15,000</b><span>Max monthly rent</span></div>
+      <div><b>₹2,600</b><span>Target nightly rate</span></div>
+      <div><b>50–55%</b><span>Realistic occupancy by month 6</span></div>
+      <div><b>≈ ₹4.7 L</b><span>Annual gross target</span></div>
+      <div><b>₹3.5–4 L</b><span>Setup capital (rent model)</span></div>
+      <div><b>4.5 / 10</b><span>Rating · medium-low confidence</span></div>
+    </div>
+    <div class="stamp">Verdict: rent a 12-month pilot, don't buy for yield</div>
+    <div class="legend">Confidence tags used throughout:
+      <span><span class="cf cf-h">H</span> direct or corroborated source</span>
+      <span><span class="cf cf-m">M</span> strong proxy</span>
+      <span><span class="cf cf-l">L</span> modelled assumption</span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <nav class="toc" aria-label="Sections">
+      <div class="k">Contents</div>
+      <ol>
+<li><a href="#0-read-this-first-method-limits-and-confidence">0. Read this first: method, limits and confidence</a></li>
+<li><a href="#1-executive-verdict-one-page">1. Executive verdict (one page)</a></li>
+<li><a href="#2-airbnb-data-what-is-actually-known">2. Airbnb data: what is actually known</a></li>
+<li><a href="#3-micro-pocket-map-and-analysis">3. Micro-pocket map and analysis</a></li>
+<li><a href="#4-demand-drivers-and-events">4. Demand drivers and events</a></li>
+<li><a href="#5-seasonality-calendar-base-case-studio-in-pocket-1">5. Seasonality calendar (base case, studio in pocket #1)</a></li>
+<li><a href="#6-studio-specific-what-guests-pay-for">6. Studio-specific: what guests pay for</a></li>
+<li><a href="#7-distance-rules-do-guests-pay-for-walking-distance">7. Distance rules (do guests pay for walking distance?)</a></li>
+<li><a href="#8-walkability-and-convenience-score-010-analyst-scored-from-map-knowledge-l">8. Walkability and convenience score (0–10, analyst-scored from map knowledge) L</a></li>
+<li><a href="#9-property-prices-and-rents-search-extracts-2026">9. Property prices and rents (search extracts, 2026)</a></li>
+<li><a href="#10-financial-model-single-studio-pocket-1">10. Financial model (single studio, pocket #1)</a></li>
+<li><a href="#11-capital-scenarios">11. Capital scenarios</a></li>
+<li><a href="#12-ideal-studio-specification-and-setup-budget">12. Ideal studio specification and setup budget</a></li>
+<li><a href="#13-competitor-deep-dive-and-the-winning-formula">13. Competitor deep dive and the winning formula</a></li>
+<li><a href="#14-regulation-society-and-rwa-risk">14. Regulation, society and RWA risk</a></li>
+<li><a href="#15-safety-and-operations-scores-15-analyst-scored-l">15. Safety and operations scores (1–5, analyst-scored) L</a></li>
+<li><a href="#16-weighted-scoring-model-out-of-100">16. Weighted scoring model (out of 100)</a></li>
+<li><a href="#17-buy-this-not-that-the-broker-brief">17. &quot;Buy this, not that&quot;: the broker brief</a></li>
+<li><a href="#18-direct-answers">18. Direct answers</a></li>
+<li><a href="#19-do-not-invest-if">19. DO NOT INVEST IF…</a></li>
+<li><a href="#20-source-list">20. Source list</a></li>
+      </ol>
+    </nav>
+    <main>
+<h2 id="0-read-this-first-method-limits-and-confidence">0. Read this first: method, limits and confidence</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct page access (Airbnb, AirROI, AirDNA, 99acres, etc.)</td>
+<td><strong>Blocked</strong>: the research environment's network policy blocked page fetches. All data comes from <strong>search-engine extracts of those pages</strong> (Oct 2026). I could not open Airbnb calendars, scrape listings or run paid tools (AirDNA MarketMinder, PriceLabs Market Dashboard, KeyData).</td>
+</tr>
+<tr>
+<td>Airbnb occupancy</td>
+<td><strong>Not publicly exposed.</strong> City figures come from AirROI's modelled dataset (Aug 2025–Jul 2026). Listing-level occupancy is <strong>not observed</strong>. I estimate it from review counts (a proxy method, explained in §2.4).</td>
+</tr>
+<tr>
+<td>Calendar "unavailable" dates</td>
+<td>Not used as a booking signal. Unavailable can mean booked, owner-blocked, min-stay gap or delisted. Treat it as <strong>unknown</strong>.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>AirROI reports in USD. Converted at <strong>₹87/USD</strong> (assumption).</td>
+</tr>
+<tr>
+<td>Confidence tags</td>
+<td><span class="cf cf-h">H</span> direct source or several corroborating sources · <span class="cf cf-m">M</span> strong proxy · <span class="cf cf-l">L</span> modelled assumption</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Before you commit money, do the ground work that would raise confidence.</strong> Buy one month of AirDNA or PriceLabs Market Dashboard (about $20–40) for the Gomti Nagar and Shaheed Path polygons. Then track 30 comps' calendars daily for 60 days, and talk to 3 operators in DLF MyPad and Omaxe Hazratganj.</p>
+<hr />
+<h2 id="1-executive-verdict-one-page">1. Executive verdict (one page)</h2>
+<blockquote>
+<h3 id="lucknow-studio-airbnb-investment-verdict">LUCKNOW STUDIO AIRBNB: INVESTMENT VERDICT</h3>
+<p><strong>Best micro-pocket:</strong> Vibhuti Khand core, Gomti Nagar. Specifically the 1 km pocket around <strong>DLF MyPad / Vibhuti Khand Road 6</strong>, bounded by Summit Building, One Awadh Center, Indira Gandhi Pratishthan and Gomti Nagar railway station.
+<strong>Second-best (high-occupancy):</strong> <strong>Medanta–Lulu pocket on Amar Shaheed Path</strong>: Sushant Golf City Sector A/B and Ansal API, within 1.5 km of Medanta Hospital and Lulu Mall.
+<strong>Third-best (value/emerging):</strong> <strong>Indira Nagar metro belt</strong>: Munshi Pulia to Bhootnath metro stations (Sectors 11–21, within 600 m of the Faizabad Road metro line). Built for mid-stays and relocation stays. Wildcard: Gomti Nagar Extension Sectors 4–7 near Ekana and Phoenix Palassio, but <strong>not</strong> inside Omaxe Hazratganj, which is already saturated.</p>
+<p><strong>Recommended property:</strong> studio of 400–550 sq ft carpet in a gated tower with a lift, DG backup, guards and a pool/gym. Ideally the building is a <strong>serviced-studio or mixed-use project</strong>, where STR use is the norm, not a fight with the RWA.
+<strong>Recommended rent:</strong> ≤ ₹15,000/month furnished (Vibhuti Khand). Never more than ₹18,000.
+<strong>Recommended purchase (if ever):</strong> ≤ ₹42 lakh all-in for ≥ 450 sq ft carpet. At today's asks (₹50–60 lakh) the STR yield does not justify buying.
+<strong>Expected ADR:</strong> ₹2,400–2,800 (target ₹2,600) <span class="cf cf-m">M</span>
+<strong>Expected occupancy:</strong> 45–55% in year 1 with professional execution; 60%+ only if you reach the top decile <span class="cf cf-m">M/L</span>
+<strong>Expected gross revenue:</strong> ≈ ₹38,000–42,000/month (base) <span class="cf cf-l">L</span>
+<strong>Expected net (rent model, ₹15k rent):</strong> ≈ ₹4,000–8,000/month <span class="cf cf-l">L</span>
+<strong>Expected net (owned, no loan):</strong> ≈ ₹19,000/month NOI, which is <strong>≈ 3.9% net yield</strong>, <em>below</em> a plain long-term let (~4.2%) <span class="cf cf-l">L</span>
+<strong>Estimated setup cost (rent model):</strong> ₹3.3–4.0 lakh, including deposit
+<strong>Recommended model:</strong> <strong>RENT (pilot), not BUY</strong></p>
+<p><strong>Investment rating: ⭐ 4.5 / 10</strong> · <strong>Confidence: Medium-Low</strong></p>
+<p><strong>Biggest opportunity:</strong> most of Lucknow's 515 active listings perform poorly (median occupancy ≈ 20%). A properly run, couple-safe, work-ready studio with 30+ five-star reviews can sit in the top quartile (38%+) and capture medical and corporate mid-stays that hotels serve badly.</p>
+<p><strong>Biggest risks:</strong>
+1. <strong>Supply shock.</strong> Listings grew 164% YoY and ADR fell 40% YoY [H, AirROI].
+2. <strong>Regulation.</strong> The UP Homestay policy assumes the owner resides on the premises. A non-resident entire-studio STR in a residential society sits in a legal and RWA grey zone.</p>
+<p><strong>Final recommendation: RENT (12-month pilot) — DO NOT BUY for STR yield in 2026–27.</strong> Revisit buying only after 12 months of your own booking data.</p>
+</blockquote>
+<hr />
+<h2 id="2-airbnb-data-what-is-actually-known">2. Airbnb data: what is actually known</h2>
+<h3 id="21-city-level-metrics-airroi-dataset-aug-2025jul-2026">2.1 City-level metrics (AirROI dataset, Aug 2025–Jul 2026)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Confidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active listings</td>
+<td><strong>515</strong> ("midsize market")</td>
+<td>H (modelled by AirROI from scraped data)</td>
+<td><a target="_blank" rel="noopener" href="https://www.airroi.com/airbnb-data/india/uttar-pradesh/lucknow">AirROI Lucknow</a></td>
+</tr>
+<tr>
+<td>Average ADR</td>
+<td><strong>$42 ≈ ₹3,650</strong> (skewed upward by villas and 2–4BHK)</td>
+<td>H/M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Average occupancy</td>
+<td><strong>24.4%</strong></td>
+<td>M (AirROI model)</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Median occupancy</td>
+<td><strong>≈ 20%</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Top 25% occupancy</td>
+<td><strong>≥ 38%</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Top 10% occupancy</td>
+<td><strong>≥ 60%</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Bottom 25%</td>
+<td>≈ 9%</td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>RevPAR</td>
+<td><strong>$10 ≈ ₹870/night</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Avg annual revenue / listing</td>
+<td><strong>$2,111 ≈ ₹1.84 lakh</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Supply growth YoY</td>
+<td><strong>+164.1%</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>ADR change YoY</td>
+<td><strong>−40%</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Avg length of stay</td>
+<td><strong>≈ 3.2 nights</strong></td>
+<td>M</td>
+<td>AirROI (via <a target="_blank" rel="noopener" href="https://www.airdna.co/top/in/lucknow">AirDNA-indexed extract</a>)</td>
+</tr>
+<tr>
+<td>Reservations / year (market)</td>
+<td>≈ 5,912; ≈ 11.5 bookings per listing</td>
+<td>M</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Booking lead time</td>
+<td>≈ 20 days</td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Property mix</td>
+<td>Apartment/condo 57.1%, house 34.4%</td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Peak months</td>
+<td>Nov (top revenue), Dec (top occupancy), Feb. Peak-season avg ≈ 34% occupancy</td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Low month</td>
+<td><strong>July</strong></td>
+<td>M</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Regulation level (AirROI tag)</td>
+<td>"Low" (I disagree; see §14)</td>
+<td>—</td>
+<td>AirROI</td>
+</tr>
+<tr>
+<td>Studio count / 1BR count / superhost share / cleaning fees</td>
+<td><strong>Not obtainable</strong> without paid access</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Gomti Nagar search page</td>
+<td>"~380 rentals", "from ₹906/night before taxes"</td>
+<td>M</td>
+<td><a target="_blank" rel="noopener" href="https://www.airbnb.com/gomti-nagar-lucknow-india/stays/apartments">Airbnb Gomti Nagar</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What this means for you (conclusion):</strong> Lucknow is <strong>not</strong> an under-supplied STR market. The <em>average</em> listing makes about ₹15,000/month gross. You only make money if you sit in the <strong>top quartile</strong>. Every recommendation below assumes you will run it as a top-quartile product. If you will not personally manage it, or cannot pay a good co-host, stop here.</p>
+<h3 id="22-hotel-benchmark">2.2 Hotel benchmark</h3>
+<ul>
+<li>Horwath HTL: Lucknow branded hotels ran in the <strong>mid-to-upper 70s % occupancy (2024)</strong>. Lucknow "drops below 70%" in the 2025 review, as new supply arrived. All-India 2025: 64% occupancy, ADR ₹8,624 <span class="cf cf-h">H</span> (<a target="_blank" rel="noopener" href="https://horwathhtl.com/publication/india-hotel-market-review-2025/">Horwath HTL 2025</a>, <a target="_blank" rel="noopener" href="https://horwathhtl.com/wp-content/uploads/2025/02/India-Hotel-Market-Report-2024.pdf">2024 PDF</a>, <a target="_blank" rel="noopener" href="https://travtalkindia.com/all-india-hotel-performance-strengthened-in-2025-with-64-occupancy-horwath-htl/">TravTalk</a>).</li>
+<li><strong>Conclusion:</strong> demand for rooms in Lucknow is healthy. The STR problem is <em>product fragmentation and oversupply of mediocre studios</em>, not lack of travellers.</li>
+</ul>
+<h3 id="23-comparable-listings-31-found-via-indexed-pages">2.3 Comparable listings (31 found via indexed pages)</h3>
+<p>Prices are as shown in search snippets (USD; date unknown; may or may not include fees). Ratings and review counts are as indexed. <strong>Occupancy is not observed</strong> for any of them.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Listing (as indexed)</th>
+<th>Building / pocket</th>
+<th>Type</th>
+<th>Size</th>
+<th>Price seen</th>
+<th>Rating (reviews)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>UrbanCove2: 1RK Studio Apt</td>
+<td>Gomti Nagar</td>
+<td>1RK</td>
+<td>450 sq ft</td>
+<td>—</td>
+<td>—</td>
+<td>In-suite kitchen, sleeps 4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Su Casa | The Pool View Studio</td>
+<td>likely DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Pool-side balcony, king bed, self check-in, kitchenette</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tu Casa | The Sky View Studio</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>5.0 (8)</td>
+<td>Same brand as #2 (multi-unit operator)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Singh's Studio in DLF MyPad</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>4.75 (8)</td>
+<td>Also on TripAdvisor as "Singh's Studio Apartments"</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Aurelia Studio (Couple Friendly)</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>5.0 (6)</td>
+<td>Couple-friendly positioning</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Unnamed DLF MyPad studio</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td><strong>4.9 (82)</strong></td>
+<td>Strong review velocity</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cozy Sky Stay Studio</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DLF MyPad Calmiya</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Also on Expedia/Travelocity</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Private Studio Apart at DLF MyPad</td>
+<td>DLF MyPad</td>
+<td>Studio</td>
+<td>300 sq ft</td>
+<td>—</td>
+<td>—</td>
+<td>Vrbo. Kitchenette, balcony, sleeps 2. 15-min walk to IGP / One Awadh</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Royal Stay DLF MyPad</td>
+<td>Vibhuti Khand Rd 6</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Aparthotel-style</td>
+</tr>
+<tr>
+<td>—</td>
+<td><em>DLF MyPad OTA range</em></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>$49–66</strong> (OTA "standard room")</td>
+<td>—</td>
+<td><a target="_blank" rel="noopener" href="https://en.planetofhotels.com/india/lucknow/spacious-studio-dlf-mypad-vibhuti-khand-gomtinagar">planetofhotels</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>A beautiful studio apartment – Omaxe Hazratganj</td>
+<td>Omaxe Hazratganj, GN Ext</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>4.36 (<strong>83</strong>)</td>
+<td>5 min to Ekana</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Arth Luxury Studio Apartment</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>~$35</td>
+<td>4.78</td>
+<td>"Arth" multi-unit operator</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Arth Tranquil Studio Apartment</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>~$29</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Arth Ultra Luxury Studio</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>high (69)</td>
+<td>Also on Goibibo as "Arth Studios"</td>
+</tr>
+<tr>
+<td>15</td>
+<td>The Ganj Studio</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td><strong>~$22</strong></td>
+<td>—</td>
+<td>Price floor in the building</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Couple's Paradise | Omaxe Hazratganj</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>4.94 (34)</td>
+<td>Couple positioning</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Furnished studio, Omaxe Hazratganj</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>4.86 (37)</td>
+<td>Sells "5 min to Ekana, Palassio, HCL, Medanta"</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ZoneOut Ultra Luxury Studio</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>CozyBox: The Green Comfort</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>Luxuries Stay … Near Ekana</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Pool Facing Cozy Studio</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>Luxury studio, Omaxe New Hazratganj</td>
+<td>Omaxe Hazratganj</td>
+<td>Studio</td>
+<td>—</td>
+<td>~$47</td>
+<td>—</td>
+<td>Top of the building's range</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Studio Apartment 1 | Little Lucknow Stays</td>
+<td>Omaxe City (Lulu/Ekana side)</td>
+<td>Studio</td>
+<td>—</td>
+<td>budget</td>
+<td>Guest Favourite</td>
+<td>55" TV, king bed, <strong>daily housekeeping</strong></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Green flag couple stay | Pratap living Luxe studio</td>
+<td>Lulu/Golf City side</td>
+<td>Studio</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>Acacia Stays 614</td>
+<td>near Lulu &amp; Medanta</td>
+<td>Apt</td>
+<td>—</td>
+<td>—</td>
+<td><strong>4.97 (58)</strong></td>
+<td>Medical + mall demand</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Bluebell Cottage</td>
+<td>500 m from Medanta</td>
+<td>House</td>
+<td>—</td>
+<td>—</td>
+<td><strong>4.98 (83)</strong></td>
+<td>Medical demand proof</td>
+</tr>
+<tr>
+<td>27</td>
+<td>"Medanta Lulu couple friendly flat + kitchen"</td>
+<td>Shaheed Path</td>
+<td>Apt</td>
+<td>—</td>
+<td>from ₹2,219</td>
+<td>—</td>
+<td>+₹600 per extra guest</td>
+</tr>
+<tr>
+<td>28</td>
+<td>UrbanBliss | Sec-21 Indiranagar (Cestlavie STR)</td>
+<td>Indira Nagar Sec 21</td>
+<td>Apt</td>
+<td>—</td>
+<td>—</td>
+<td>4.83 (35)</td>
+<td>Professional operator</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Nahil's – Entire Home with Caretaker</td>
+<td>Indira Nagar</td>
+<td>Home</td>
+<td>—</td>
+<td>—</td>
+<td><strong>4.95 (399)</strong></td>
+<td>City's review-velocity leader among results</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Home in Aliganj</td>
+<td>Aliganj</td>
+<td>Home</td>
+<td>—</td>
+<td>—</td>
+<td>4.89 (54)</td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Lucknow central 1BHK near Charbagh</td>
+<td>Charbagh</td>
+<td>1BHK</td>
+<td>—</td>
+<td>—</td>
+<td>5.0 (3)</td>
+<td>Thin data</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: <a target="_blank" rel="noopener" href="https://www.airbnb.com/gomti-nagar-lucknow-india/stays/apartments">Airbnb Gomti Nagar</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.com.sg/lucknow-india/stays/apartments">Airbnb Lucknow apartments</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.com/rooms/1178982403846568775">Omaxe listing 1178982403846568775</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.com/rooms/1270031473869773052">Arth 1270031473869773052</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.com/rooms/1325218791581921895">Arth Tranquil 1325218791581921895</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.com/rooms/1483390133634065675">The Ganj Studio 1483390133634065675</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.co.in/rooms/1391149720597850093">Singh's Studio 1391149720597850093</a>, <a target="_blank" rel="noopener" href="https://www.vrbo.com/en-gb/p3141123vb">Vrbo DLF MyPad</a>, <a target="_blank" rel="noopener" href="https://www.airbnb.co.in/lulu-mall-lucknow-india/stays/pet-friendly">Lulu Mall area</a>, <a target="_blank" rel="noopener" href="https://www.makemytrip.com/hotels/poi-apartments-near-medanta_super_speciality_hospital_lucknow-lucknow.html">MMT near Medanta</a>, <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Hotel_Review-g297684-d25410818-Reviews-Singh_s_Studio_Apartments_at_DLF_MyPad-Lucknow_Lucknow_District_Uttar_Pradesh.html">TripAdvisor Singh's</a>.</p>
+<p><strong>Observed facts from the comp set:</strong>
+1. <strong>Two buildings dominate Lucknow's studio STR supply: DLF MyPad (Vibhuti Khand) and Omaxe Hazratganj (Gomti Nagar Extension).</strong> At least 10 distinct listings were indexed in each.
+2. <strong>Omaxe Hazratganj is visibly price-compressed</strong> at about $22–47 (₹1,900–4,100), with most around $25–35 (₹2,200–3,000). The building has multiple multi-unit operators (Arth, ZoneOut, CozyBox).
+3. <strong>DLF MyPad commands higher indexed rates</strong> ($49–66 OTA), plus more Superhost and 5.0 listings.
+4. <strong>"Couple-friendly" is an explicit selling point</strong> in many titles. This is a real demand segment in Lucknow but also a reputational and RWA risk (see §14–15).
+5. <strong>Highest review counts belong to operators with caretakers or daily housekeeping</strong>: Nahil's (399), Bluebell (83), Omaxe #11 (83), DLF #6 (82).</p>
+<h3 id="24-how-i-estimate-occupancy-and-why-you-should-distrust-anyone-who-gives-you-an-exact-number">2.4 How I estimate occupancy (and why you should distrust anyone who gives you an exact number)</h3>
+<ul>
+<li><strong>Review-rate method <span class="cf cf-l">L</span>:</strong> in India, about 40–60% of Airbnb stays leave a review. Bookings ≈ reviews ÷ 0.5. Nights ≈ bookings × 3.2 (AirROI LOS).</li>
+<li>Example: a studio with 82 reviews over about 24 months ≈ 164 stays ≈ 525 nights ≈ 262 nights/yr ≈ <strong>~70% occupancy</strong>. That is consistent with "top 10% ≥ 60%".</li>
+<li>Example: a studio with 8 reviews in about 12 months ≈ 16 stays ≈ 51 nights ≈ <strong>~14%</strong>. That is consistent with the median.</li>
+<li>Listing age is not visible in the extracts, so these are illustrations, not measurements. <strong>Use this method yourself on live pages</strong>: listing ID magnitude, plus "joined in" and first-review date, gives you the age.</li>
+<li><strong>Never</strong> read calendar unavailability as booked.</li>
+</ul>
+<hr />
+<h2 id="3-micro-pocket-map-and-analysis">3. Micro-pocket map and analysis</h2>
+<h3 id="31-conceptual-map">3.1 Conceptual map</h3>
+<pre><code>                          N  (Kursi Rd / IIM Rd / BBD Univ — ⚪ low)
+                                   |
+        Aliganj/Kapoorthala ⚪      |     Indira Nagar metro belt 🟡 (Munshi Pulia–Bhootnath)
+                    \              |          /
+   Old City / Chowk / KGMU ⚪──── Hazratganj 🟠 ──── Gomti Nagar: VIBHUTI KHAND 🔴 ★1
+   Imambaras, Rumi Darwaza         (Saharaganj,         (DLF MyPad, Summit Bldg, IGP,
+          |                         Vidhan Sabha)        GN rly stn, One Awadh)
+   Charbagh / Naka ⚪(hotel-heavy)                              |
+          |                                       Gomti Nagar Ext. Sec 4–7 🟡 (Ekana/Palassio)
+   Airport / Kanpur Rd / Ashiyana ⚪                Omaxe Hazratganj 🔵 OVERSUPPLIED
+          \                                              |
+           \______ Amar Shaheed Path __________ MEDANTA–LULU POCKET 🔴/🟠 ★2
+                                             (Sushant Golf City A/B, Ansal API, HCL IT City side)
+   Raebareli Rd / SGPGI / Vrindavan Yojana 🟡 (medical, long stays)
+                                   S
+🔴 High STR demand  🟠 Medium-high  🟡 Emerging  ⚪ Low  🔵 Oversupplied   ★ = recommended
+</code></pre>
+<h3 id="32-top-10-micro-pockets-definitions-drivers-competition">3.2 Top 10 micro-pockets (definitions, drivers, competition)</h3>
+<p>Demand mix weights are <strong><span class="cf cf-l">L</span> analyst estimates</strong> based on location of demand generators and the positioning language used in comp titles.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Micro-pocket (0.5–2 km)</th>
+<th>Anchors</th>
+<th>Demand mix (Biz/Med/Tour/Wed&amp;Event/Sport/Edu/Transit/Reloc)</th>
+<th>STR competition</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Vibhuti Khand core</strong>: Vibhuti Khand Rd 6 around DLF MyPad, Summit Building, One Awadh Center, Fun Republic, Indira Gandhi Pratishthan (IGP), Gomti Nagar rly stn</td>
+<td>Corporate offices, banks' regional HQs, IGP expos (UP Pariwahan Expo 21–22 Oct 2026; Medical Expo 3–5 Dec 2026), nightlife &amp; restaurants</td>
+<td>35/5/10/20/5/5/10/10</td>
+<td>High (DLF MyPad cluster) but quality-differentiated, highest ADR</td>
+<td>🔴 Best overall</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Medanta–Lulu pocket</strong>: Sushant Golf City Sector A/B, Ansal API, Amar Shaheed Path frontage within 1.5 km of Medanta and Lulu Mall</td>
+<td>Medanta (super-speciality), Lulu Mall, Ekana (≈3–4 km), HCL IT City, airport ≈ 12–15 km</td>
+<td>10/40/5/10/10/0/5/20</td>
+<td>Medium. Mostly 2BHKs and houses; few purpose-run studios</td>
+<td>🔴/🟠 Best occupancy</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Indira Nagar metro belt</strong>: Sectors 11–21 within 600 m of Munshi Pulia / Indira Nagar / Bhootnath metro</td>
+<td>Red Line metro (Charbagh &amp; airport direct), markets, relocations</td>
+<td>20/10/5/15/0/10/10/30</td>
+<td>Medium-low, a few pro operators (Cestlavie)</td>
+<td>🟡 Best value</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Gomti Nagar Ext. Sec 4–7 (outside Omaxe Hazratganj)</strong>: Ekana / Phoenix Palassio / CM residence-HQ side</td>
+<td>Ekana (50k seats), Palassio, Police HQ</td>
+<td>20/10/5/15/20/5/5/20</td>
+<td>Medium, rising</td>
+<td>🟡 Emerging</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Omaxe Hazratganj (studio tower)</strong>: Shaheed Path, GN Ext</td>
+<td>Same as #4</td>
+<td>—</td>
+<td><strong>Very high</strong>: ≥10 indexed studio listings, $22–35</td>
+<td>🔵 Oversupplied</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Hazratganj core</strong>: Saharaganj–Vidhan Sabha–Lalbagh 1 km</td>
+<td>Heritage shopping, Secretariat, courts, Saharaganj Mall</td>
+<td>35/5/30/10/0/5/10/5</td>
+<td>Low STR, high hotel</td>
+<td>🟠 Good demand, poor stock (old buildings, few studios, parking)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>SGPGI / Vrindavan Yojana / Raebareli Rd</strong></td>
+<td>SGPGI (Asia-scale tertiary hospital)</td>
+<td>5/60/0/5/0/5/5/20</td>
+<td>Low (e.g. a "2BHK near SGPGI", 3.67★)</td>
+<td>🟡 Monthly medical stays; low ADR</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Charbagh–Naka Hindola–Hussainganj</strong></td>
+<td>Charbagh rly stn, East-West Metro (construction from Feb 2026)</td>
+<td>20/10/15/10/0/5/40/0</td>
+<td>Hotel-saturated (hundreds of budget hotels)</td>
+<td>⚪ Avoid for studios</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Kaiserbagh / Chowk / KGMU / Imambaras</strong></td>
+<td>Heritage tourism, KGMU</td>
+<td>5/35/45/5/0/5/5/0</td>
+<td>Low STR</td>
+<td>⚪ Great demand, unworkable building stock</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Airport / Kanpur Rd / Ashiyana / Krishna Nagar</strong></td>
+<td>CCS Airport (6.07 M pax FY26, −5.8% YoY)</td>
+<td>15/5/5/20/0/0/40/15</td>
+<td>Low</td>
+<td>⚪ Transit demand is short and price-sensitive</td>
+</tr>
+</tbody>
+</table></div>
+<p>Others reviewed and <strong>not</strong> ranked: Aliganj/Kapoorthala (residential, family-oriented, 4.89★ homes exist but low ADR), Mahanagar, Kursi Road / IIM Road / BBD University side (education peaks only), Faizabad Road beyond Polytechnic (patchy).</p>
+<h3 id="33-competition-intensity">3.3 Competition intensity</h3>
+<ul>
+<li><strong>City-level:</strong> 515 active STRs for a ~4 million metro population ≈ <strong>0.13 listings per 1,000 residents</strong> <span class="cf cf-l">L</span>, where the population is an estimate. That is very low by global standards, but irrelevant. Lucknow STR demand is narrow (corporate, medical, events, couples), not leisure-mass.</li>
+<li><strong>Per pocket:</strong> listings per 1,000 residents is not meaningful at 0.5–2 km scale without the paid polygon data. A practical proxy: <strong>count of studio listings per building</strong>.</li>
+<li>Omaxe Hazratganj and DLF MyPad: 10+ each (indexed lower bound).</li>
+<li>Medanta/Lulu: a handful.</li>
+<li>Indira Nagar metro: a handful.</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Omaxe Hazratganj</td>
+<td><strong>Oversupplied</strong> 🔵</td>
+</tr>
+<tr>
+<td>DLF MyPad</td>
+<td>Saturated but premium</td>
+</tr>
+<tr>
+<td>Medanta–Lulu studios</td>
+<td><strong>Under-served</strong></td>
+</tr>
+<tr>
+<td>Indira Nagar metro mid-stay studios</td>
+<td><strong>Under-served</strong></td>
+</tr>
+<tr>
+<td>SGPGI pocket (quality product)</td>
+<td><strong>Under-served</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="4-demand-drivers-and-events">4. Demand drivers and events</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Evidence</th>
+<th>Effect on a studio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IPL</strong></td>
+<td>LSG had 7 home games at Ekana in IPL 2026: 1, 12, 22, 26 Apr; 7, 15, 23 May <span class="cf cf-h">H</span> (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/2026_Lucknow_Super_Giants_season">Wikipedia 2026 LSG</a>). Stadium seats 50,000 <span class="cf cf-h">H</span>.</td>
+<td>Match nights: ADR 1.5–2.5× within 5 km of Ekana <span class="cf cf-l">L</span>. That is only about 7–10 nights a year, so it is <em>upside, not a business plan</em>. Historical price-spike data was not obtainable.</td>
+</tr>
+<tr>
+<td><strong>Wedding season</strong></td>
+<td>Nov–Feb peak; muhurats Nov 21–26 and Dec 2–12 2026, Feb–Mar 2026, May <span class="cf cf-m">M</span></td>
+<td>Group/family overflow. Studios capture couples and single guests. Weekend ADR uplift</td>
+</tr>
+<tr>
+<td><strong>Lucknow Mahotsav</strong></td>
+<td>19 Nov–15 Dec 2025 (annual) <span class="cf cf-h">H</span></td>
+<td>Supports the Nov–Dec peak</td>
+</tr>
+<tr>
+<td><strong>Expos at IGP (Vibhuti Khand)</strong></td>
+<td>UP Pariwahan Expo 21–22 Oct 2026; Medical Expo 3–5 Dec 2026; Aquaex Feb 2026 <span class="cf cf-m">M</span></td>
+<td>Direct boost to pocket #1</td>
+</tr>
+<tr>
+<td><strong>Medical</strong></td>
+<td>Medanta, SGPGI, KGMU, RML, Apollo Medics; attendants of out-of-town patients</td>
+<td><strong>Longest stays (7–30 nights), weekday-heavy, low seasonality.</strong> Best occupancy stabiliser</td>
+</tr>
+<tr>
+<td><strong>Corporate / government</strong></td>
+<td>State capital, HCL IT City, Vibhuti Khand offices</td>
+<td>Mon–Thu demand. Wants invoices, Wi-Fi, desk</td>
+</tr>
+<tr>
+<td><strong>Airport</strong></td>
+<td>6.07 M pax FY2025-26, −5.8% YoY <span class="cf cf-h">H</span> (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Chaudhary_Charan_Singh_International_Airport">Wikipedia CCS</a>)</td>
+<td>Not a strong STR driver; transit guests pick hotels</td>
+</tr>
+<tr>
+<td><strong>Metro</strong></td>
+<td>East-West corridor Charbagh–Vasant Kunj (11.2 km, 12 stns, ₹5,801 cr), construction phased from Feb 2026 <span class="cf cf-h">H</span></td>
+<td>Boosts the old-city pockets <em>after</em> 2029–30. Not relevant to 2026–27 returns</td>
+</tr>
+<tr>
+<td><strong>Tourism</strong></td>
+<td>Heritage and food tourism; UP footfall is dominated by Ayodhya, Varanasi, Prayagraj</td>
+<td>Lucknow is often a 1–2 night stop; Hazratganj/old city benefit</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="5-seasonality-calendar-base-case-studio-in-pocket-1">5. Seasonality calendar (base case, studio in pocket #1)</h2>
+<p>The shape comes from AirROI (Nov peak, Dec highest occupancy, Feb strong, Jul trough) <span class="cf cf-m">M</span>. The levels are calibrated to a 50% annual base case <span class="cf cf-l">L</span>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Demand</th>
+<th>Occ.</th>
+<th>ADR (₹)</th>
+<th>Gross (₹)</th>
+<th>Main drivers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jan</td>
+<td>High</td>
+<td>55%</td>
+<td>2,640</td>
+<td>44,600</td>
+<td>Weddings, winter tourism, Republic Day events</td>
+</tr>
+<tr>
+<td>Feb</td>
+<td>High</td>
+<td>61%</td>
+<td>2,680</td>
+<td>49,300</td>
+<td>Weddings, expos, Valentine's/couples</td>
+</tr>
+<tr>
+<td>Mar</td>
+<td>Shoulder</td>
+<td>50%</td>
+<td>2,600</td>
+<td>39,900</td>
+<td>Holi, fiscal-year-end corporate</td>
+</tr>
+<tr>
+<td>Apr</td>
+<td>Shoulder+</td>
+<td>53%</td>
+<td>2,620</td>
+<td>42,200</td>
+<td>IPL (4 home games), weddings</td>
+</tr>
+<tr>
+<td>May</td>
+<td>Shoulder</td>
+<td>45%</td>
+<td>2,560</td>
+<td>35,400</td>
+<td>IPL (3 games), weddings; heat</td>
+</tr>
+<tr>
+<td>Jun</td>
+<td>Low</td>
+<td>35%</td>
+<td>2,490</td>
+<td>26,700</td>
+<td>Heat; exams/interviews; medical</td>
+</tr>
+<tr>
+<td>Jul</td>
+<td><strong>Lowest</strong></td>
+<td>30%</td>
+<td>2,450</td>
+<td>22,500</td>
+<td>Monsoon. Push <strong>monthly stays</strong></td>
+</tr>
+<tr>
+<td>Aug</td>
+<td>Low</td>
+<td>35%</td>
+<td>2,490</td>
+<td>26,700</td>
+<td>Monsoon; medical</td>
+</tr>
+<tr>
+<td>Sep</td>
+<td>Shoulder−</td>
+<td>43%</td>
+<td>2,540</td>
+<td>33,100</td>
+<td>Corporate return</td>
+</tr>
+<tr>
+<td>Oct</td>
+<td>Shoulder+</td>
+<td>53%</td>
+<td>2,620</td>
+<td>42,200</td>
+<td>Navratri, Dussehra, Diwali, IGP expos</td>
+</tr>
+<tr>
+<td>Nov</td>
+<td><strong>Peak</strong></td>
+<td>68%</td>
+<td>2,740</td>
+<td>56,700</td>
+<td>Weddings, Mahotsav, corporate</td>
+</tr>
+<tr>
+<td>Dec</td>
+<td><strong>Peak</strong></td>
+<td>71%</td>
+<td>2,760</td>
+<td>59,200</td>
+<td>Weddings, Christmas/NY, Medical Expo</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Pricing policy:</strong>
+- Use dynamic pricing (PriceLabs or Beyond).
+- Set a 7-night discount of 10–15% and a 28-night discount of 35–45%, targeting medical and relocation stays at ₹40–50k/month.
+- Use 1-night minimum on weekdays and 2-night on peak weekends.
+- <strong>Switch to monthly-stay mode Jun–Sep.</strong></p>
+<hr />
+<h2 id="6-studio-specific-what-guests-pay-for">6. Studio-specific: what guests pay for</h2>
+<p>Ranking is based on comp-title and description language (what top listings <em>lead with</em>) plus Lucknow operating realities <span class="cf cf-m">M/L</span>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Amenity</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Power backup (DG/inverter covering AC)</strong></td>
+<td>Summer outages kill reviews. Non-negotiable</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>AC (inverter, 1.5 T)</strong></td>
+<td>6 months of heat</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Self check-in (smart lock) + 24×7 guarded gate</strong></td>
+<td>Top comps lead with it; couple and late-arrival segments</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Fast Wi-Fi (≥100 Mbps fibre + backup)</strong></td>
+<td>Corporate and medical stays</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>King bed + quality mattress</strong></td>
+<td>Top comps lead with it</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Kitchenette (induction, microwave, fridge, kettle, RO)</strong></td>
+<td>Mid-stay and medical guests</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Workspace (desk + ergonomic chair)</strong></td>
+<td>Corporate</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Smart TV (55")</strong></td>
+<td>Explicitly marketed by comps</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Washing machine</strong></td>
+<td>Unlocks 7–30-night stays</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Housekeeping (daily on request)</strong></td>
+<td>Highest-review comps offer it</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Lift</td>
+<td>Mandatory above 2nd floor</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Parking</td>
+<td>Medical/family guests drive in from other districts</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Balcony / pool view</td>
+<td>ADR premium in DLF MyPad (Su Casa / Tu Casa positioning)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Pool / gym access</td>
+<td>Nice-to-have, adds photo value</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Proximity to restaurants</td>
+<td>Strong in Vibhuti Khand</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Proximity to metro</td>
+<td>Matters only in Indira Nagar belt</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ADR-premium amenities <span class="cf cf-l">L</span>:</strong> pool-view balcony, designer interiors, king bed, and self check-in. Together these are worth roughly <strong>+15–30%</strong> over a plain studio in the same building, judging by the $22 vs $35–47 spread inside Omaxe Hazratganj.</p>
+<hr />
+<h2 id="7-distance-rules-do-guests-pay-for-walking-distance">7. Distance rules (do guests pay for walking distance?)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Sweet spot</th>
+<th>Evidence / logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hospital (Medanta/SGPGI)</td>
+<td><strong>0–1.5 km</strong> (walk/e-rickshaw)</td>
+<td>Comps explicitly sell "500 m from Medanta", "5 min walk". Attendants have no car and shuttle constantly <span class="cf cf-m">M</span></td>
+</tr>
+<tr>
+<td>Business district (Vibhuti Khand)</td>
+<td><strong>0–1.5 km</strong></td>
+<td>Walk to offices and restaurants; ADR leader <span class="cf cf-m">M</span></td>
+</tr>
+<tr>
+<td>Mall (Lulu/Palassio/Fun Republic)</td>
+<td>0–2 km</td>
+<td>A convenience signal, not a destination <span class="cf cf-l">L</span></td>
+</tr>
+<tr>
+<td>Stadium (Ekana)</td>
+<td>0–5 km</td>
+<td>Only ~7–10 high-value nights/yr; don't pay a purchase premium for it <span class="cf cf-m">M</span></td>
+</tr>
+<tr>
+<td>Metro</td>
+<td>0–600 m</td>
+<td>Only matters for mid-stay and relocation guests without a car <span class="cf cf-l">L</span></td>
+</tr>
+<tr>
+<td>Railway (Charbagh)</td>
+<td>0–2 km</td>
+<td>Hotel-saturated; STR premium ≈ nil <span class="cf cf-l">L</span></td>
+</tr>
+<tr>
+<td>Airport</td>
+<td>3–12 km</td>
+<td>Little evidence of STR premium; transit guests choose hotels <span class="cf cf-l">L</span></td>
+</tr>
+<tr>
+<td>Tourist sites (Imambara/Rumi Darwaza)</td>
+<td>0–2 km</td>
+<td>Real demand but no suitable building stock <span class="cf cf-m">M</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Conclusion:</strong> guests pay for walking distance <strong>only</strong> to hospitals and the Vibhuti Khand business/nightlife strip. Elsewhere they pay for building quality.</p>
+<hr />
+<h2 id="8-walkability-and-convenience-score-010-analyst-scored-from-map-knowledge-l">8. Walkability and convenience score (0–10, analyst-scored from map knowledge) <span class="cf cf-l">L</span></h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket</th>
+<th>Food/cafés</th>
+<th>Grocery/pharmacy</th>
+<th>Offices/cowork</th>
+<th>Transport</th>
+<th>Nightlife</th>
+<th>Health</th>
+<th><strong>Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibhuti Khand core</td>
+<td>10</td>
+<td>9</td>
+<td>9</td>
+<td>7 (GN rly stn; no metro)</td>
+<td>10</td>
+<td>7</td>
+<td><strong>8.8</strong></td>
+</tr>
+<tr>
+<td>Hazratganj core</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+<td>9 (metro)</td>
+<td>7</td>
+<td>8</td>
+<td><strong>8.5</strong></td>
+</tr>
+<tr>
+<td>Indira Nagar metro belt</td>
+<td>7</td>
+<td>9</td>
+<td>5</td>
+<td>9 (metro)</td>
+<td>4</td>
+<td>6</td>
+<td><strong>6.8</strong></td>
+</tr>
+<tr>
+<td>Medanta–Lulu</td>
+<td>8 (Lulu)</td>
+<td>7</td>
+<td>6 (HCL IT City)</td>
+<td>5</td>
+<td>5</td>
+<td>10</td>
+<td><strong>6.8</strong></td>
+</tr>
+<tr>
+<td>GN Ext Sec 4–7</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>6</td>
+<td><strong>5.5</strong></td>
+</tr>
+<tr>
+<td>SGPGI/Vrindavan</td>
+<td>5</td>
+<td>7</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>10</td>
+<td><strong>4.8</strong></td>
+</tr>
+<tr>
+<td>Charbagh</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td>10</td>
+<td>3</td>
+<td>5</td>
+<td><strong>6.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="9-property-prices-and-rents-search-extracts-2026">9. Property prices and rents (search extracts, 2026)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket / project</th>
+<th>Purchase rate</th>
+<th>Studio / 1BHK ticket</th>
+<th>Studio / 1BHK rent</th>
+<th>Source</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibhuti Khand (avg)</td>
+<td><strong>₹9,950/sq ft</strong> (+24.4% YoY)</td>
+<td>—</td>
+<td>—</td>
+<td><a target="_blank" rel="noopener" href="https://www.99acres.com/vibhuti-khand-lucknow-overview-piffid">99acres</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>DLF MyPad</strong> (Vibhuti Khand; 530 units, 3 towers, 14 floors; resi-cum-commercial)</td>
+<td>—</td>
+<td>Studios: sources conflict, ₹29.5 L → ₹54 L+ (60 L–1 Cr incl. PLC/parking quoted)</td>
+<td><strong>₹13k–32k</strong>; one leased at ₹28.8k</td>
+<td><a target="_blank" rel="noopener" href="https://www.99acres.com/dlf-my-pad-resale-in-vibhuti-khand-lucknow-74736-npffid">99acres resale</a>, <a target="_blank" rel="noopener" href="https://www.squareyards.com/lucknow-residential-property/dlf-my-pad/8819/project">SquareYards</a>, <a target="_blank" rel="noopener" href="https://realtyassistant.in/property/dlf-mypad-lucknow">RealtyAssistant</a></td>
+<td>M (wide range)</td>
+</tr>
+<tr>
+<td>DLF Vibhuti Khand furnished 1RK (8th floor, pool view, 600 sq ft)</td>
+<td>—</td>
+<td>—</td>
+<td><strong>₹33,000</strong></td>
+<td><a target="_blank" rel="noopener" href="https://www.squareyards.com/rent/1-rk-for-rent-in-gomti-nagar-lucknow">SquareYards 1RK</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td>Omaxe Heights, Vibhuti Khand (single room)</td>
+<td>—</td>
+<td>—</td>
+<td>₹12,000</td>
+<td>same</td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>Omaxe Hazratganj</strong> (GN Ext, Shaheed Path; hotel-style studios from 565 sq ft)</td>
+<td>—</td>
+<td>Studio from <strong>₹38 L</strong>; ₹50–55 L typical</td>
+<td><strong>₹16k–25k</strong></td>
+<td><a target="_blank" rel="noopener" href="https://www.squareyards.com/lucknow-residential-property/omaxe-hazratganj/48253/project">SquareYards</a>, <a target="_blank" rel="noopener" href="https://www.234bhk.in/omaxehazratganj/">234bhk</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td>Sushant Golf City</td>
+<td><strong>₹7,000–7,600/sq ft</strong> (+11% QoQ to Apr–Jun 2026)</td>
+<td>—</td>
+<td>—</td>
+<td><a target="_blank" rel="noopener" href="https://www.squareyards.com/property-rates/sushant-golf-city-lucknow">SquareYards</a>, <a target="_blank" rel="noopener" href="https://www.99acres.com/property-rates-and-price-trends-in-sushant-golf-city-lucknow-prffid">99acres</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>Migsun Lucknow Central</strong> (Amar Shaheed Path, next to Medanta; commercial studios)</td>
+<td>—</td>
+<td>From ₹42 L; 650 sq ft ≈ ₹58.5 L; 40:30:30 plan</td>
+<td>— (under construction)</td>
+<td><a target="_blank" rel="noopener" href="https://migsun-lucknowcentral.in/">Migsun</a></td>
+<td>M (developer marketing)</td>
+</tr>
+<tr>
+<td>Gomti Nagar Extension</td>
+<td>₹6,650–7,450/sq ft (MagicBricks, May 2026)</td>
+<td>1BHK ₹21.5–58.5 L</td>
+<td>—</td>
+<td><a target="_blank" rel="noopener" href="https://www.99acres.com/property-rates-and-price-trends-in-gomti-nagar-extension-lucknow-prffid">99acres GN Ext</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td>Gomti Nagar (1BHK)</td>
+<td>—</td>
+<td>—</td>
+<td>₹8k–22k; avg ≈ ₹15.3k</td>
+<td><a target="_blank" rel="noopener" href="https://www.99acres.com/1-bhk-flats-for-rent-in-gomti-nagar-lucknow-ffid">99acres rent</a></td>
+<td>M</td>
+</tr>
+<tr>
+<td>Indira Nagar</td>
+<td><strong>₹4,800/sq ft</strong></td>
+<td>—</td>
+<td>1BHK avg ≈ ₹13.7k</td>
+<td><a target="_blank" rel="noopener" href="https://www.99acres.com/property-rates-and-price-trends-in-lucknow-prffid">99acres</a>, <a target="_blank" rel="noopener" href="https://www.squareyards.com/rent/1-bhk-for-rent-in-indira-nagar-lucknow">SquareYards</a></td>
+<td>M (rate looks low vs neighbours; verify)</td>
+</tr>
+<tr>
+<td>Hazratganj</td>
+<td>₹7,150/sq ft</td>
+<td>—</td>
+<td>₹19k–28.6k</td>
+<td>99acres</td>
+<td>M</td>
+</tr>
+<tr>
+<td>Raebareli Rd (SGPGI side)</td>
+<td>₹6,500/sq ft</td>
+<td>—</td>
+<td>—</td>
+<td>99acres</td>
+<td>M</td>
+</tr>
+<tr>
+<td>Aliganj</td>
+<td>₹10,000/sq ft (as indexed; likely mix-skewed)</td>
+<td>—</td>
+<td>—</td>
+<td>99acres</td>
+<td>L</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Transaction costs <span class="cf cf-h">H</span></strong> (<a target="_blank" rel="noopener" href="https://homefirstindia.com/blog/article/stamp-duty-and-registration-charges-uttar-pradesh">HomeFirst</a>, <a target="_blank" rel="noopener" href="https://www.godrejcapital.com/media-blog/knowledge-centre/stamp-duty-and-registration-charges-in-uttar-pradesh">Godrej Capital</a>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stamp duty</td>
+<td>7% (male), 6% (sole woman), 6.5% (joint M+F); women's rebate applies up to ₹1 Cr</td>
+</tr>
+<tr>
+<td>Registration</td>
+<td>1%</td>
+</tr>
+<tr>
+<td><strong>All-in</strong></td>
+<td><strong>≈ 7–8% of value or circle rate, whichever is higher</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Running costs <span class="cf cf-m">M/L</span>:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maintenance (Lucknow typical)</td>
+<td>₹1,000–5,000/month. For premium studio towers, model <strong>₹3,500</strong></td>
+</tr>
+<tr>
+<td>Electricity, domestic (UPPCL FY26)</td>
+<td>₹5.50–7.00/unit + ₹110/kW fixed</td>
+</tr>
+<tr>
+<td>Electricity, commercial</td>
+<td>≥ ₹7.50/unit + ₹330/kW + 7.5% duty</td>
+</tr>
+<tr>
+<td>Effect of a commercial meter</td>
+<td>Commercial-category studio buildings cost <strong>~30–40% more</strong> on power</td>
+</tr>
+</tbody>
+</table></div>
+<p>Source: <a target="_blank" rel="noopener" href="https://billunits.in/state-calculators/uppcl-calculator/">UPPCL tariff summary</a>.</p>
+<hr />
+<h2 id="10-financial-model-single-studio-pocket-1">10. Financial model (single studio, pocket #1)</h2>
+<p><strong>Assumptions <span class="cf cf-l">L</span></strong>, run in a transparent model:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nights per month</td>
+<td>30.4</td>
+</tr>
+<tr>
+<td>Platform cost</td>
+<td>15% blended (Airbnb host-only fee / Booking / MMT commissions)</td>
+</tr>
+<tr>
+<td>Average stay</td>
+<td>3.0 nights</td>
+</tr>
+<tr>
+<td>Housekeeping + laundry</td>
+<td>₹350 per turnover</td>
+</tr>
+<tr>
+<td>Consumables</td>
+<td>₹150 per turnover</td>
+</tr>
+<tr>
+<td>Electricity</td>
+<td>₹2,000 base + ₹110 per occupied night</td>
+</tr>
+<tr>
+<td>Fixed monthly costs</td>
+<td>Internet ₹900, OTT ₹300, pricing tool ₹800, property tax/insurance ₹500, repairs ₹1,000, furnishing replacement reserve ₹1,500</td>
+</tr>
+<tr>
+<td>Maintenance (CAM)</td>
+<td>₹3,500/month</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>Self-managed. Add ~18–20% of gross if you hire a co-host</td>
+</tr>
+<tr>
+<td>GST</td>
+<td>Airbnb remits under Sec 9(5) on bookings through it. 5% rate for tariffs &lt; ₹7,500 since 22 Sep 2025 <span class="cf cf-h">H</span> (<a target="_blank" rel="noopener" href="https://taxguru.in/goods-and-service-tax/gst-rate-hotels-restaurants-effective-22nd-september-2025.html">TaxGuru</a>)</td>
+</tr>
+<tr>
+<td>Income tax</td>
+<td>Excluded</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>ADR</th>
+<th>Occ.</th>
+<th>Nights/mo</th>
+<th>Gross/mo</th>
+<th>Opex/mo</th>
+<th><strong>NOI/mo</strong></th>
+<th>NOI/yr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market median (what most listings get)</td>
+<td>2,600</td>
+<td>25%</td>
+<td>7.6</td>
+<td>19,760</td>
+<td>15,567</td>
+<td><strong>4,193</strong></td>
+<td>0.50 L</td>
+</tr>
+<tr>
+<td>Conservative</td>
+<td>2,200</td>
+<td>35%</td>
+<td>10.6</td>
+<td>23,408</td>
+<td>16,955</td>
+<td><strong>6,453</strong></td>
+<td>0.77 L</td>
+</tr>
+<tr>
+<td><strong>Base</strong></td>
+<td><strong>2,600</strong></td>
+<td><strong>50%</strong></td>
+<td>15.2</td>
+<td><strong>39,520</strong></td>
+<td>20,633</td>
+<td><strong>18,887</strong></td>
+<td><strong>2.27 L</strong></td>
+</tr>
+<tr>
+<td>Optimistic (top decile)</td>
+<td>3,000</td>
+<td>62%</td>
+<td>18.8</td>
+<td>56,544</td>
+<td>24,196</td>
+<td><strong>32,348</strong></td>
+<td>3.88 L</td>
+</tr>
+<tr>
+<td>Your "70%" case</td>
+<td>2,600</td>
+<td>70%</td>
+<td>21.3</td>
+<td>55,328</td>
+<td>24,687</td>
+<td>30,641</td>
+<td>3.68 L</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why I did not use your 40–50 / 55–65 / 70–80% bands as given:</strong> AirROI puts the city median near 20%, the top quartile at 38%+ and the top decile at 60%+. A 55–65% "base" is a top-decile outcome. A 70–80% "optimistic" case is achievable only with long medical or corporate stays, which lower ADR.</p>
+<p><strong>Break-even occupancy at ADR ₹2,600</strong> (NOI ≈ ₹58,800 × occ − ₹10,500):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Monthly rent</th>
+<th>Break-even occ.</th>
+<th>Occ. for ₹10k/month profit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>₹0 (owned, no loan)</td>
+<td>18%</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>₹15,000</td>
+<td><strong>43%</strong></td>
+<td><strong>60%</strong></td>
+</tr>
+<tr>
+<td>₹20,000</td>
+<td><strong>52%</strong></td>
+<td>69%</td>
+</tr>
+<tr>
+<td>₹25,000</td>
+<td>60%</td>
+<td>77%</td>
+</tr>
+<tr>
+<td>EMI ₹35,350 (₹40 L loan, 8.75%, 20 yrs)</td>
+<td><strong>78%</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="101-model-a-rent-arbitrage-at-15000month">10.1 Model A: RENT (arbitrage) at ₹15,000/month</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>₹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security deposit (2–3 months)</td>
+<td>30,000–45,000</td>
+</tr>
+<tr>
+<td>Furnishing (if unfurnished; see §12)</td>
+<td>2.6–3.2 L</td>
+</tr>
+<tr>
+<td>Setup (photography, smart lock, linen ×3 sets, launch)</td>
+<td>30,000</td>
+</tr>
+<tr>
+<td><strong>Initial capital</strong></td>
+<td><strong>≈ 3.3–4.0 L</strong></td>
+</tr>
+<tr>
+<td>Base-case net (NOI 18,887 − rent 15,000)</td>
+<td>≈ <strong>₹3,900/month ≈ ₹47k/yr</strong></td>
+</tr>
+<tr>
+<td>Optimistic net</td>
+<td>≈ ₹17,300/month ≈ ₹2.08 L/yr</td>
+</tr>
+<tr>
+<td>ROI on capital</td>
+<td>Base ≈ <strong>13%</strong> · Optimistic ≈ <strong>55–60%</strong> · Conservative <strong>negative</strong></td>
+</tr>
+<tr>
+<td>Payback</td>
+<td>Base ≈ 7 yrs (fails) · Optimistic ≈ 1.7 yrs</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="102-model-b-buy-dlf-mypad-type-studio-50-l">10.2 Model B: BUY (DLF MyPad-type studio, ₹50 L)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>₹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>50.0 L</td>
+</tr>
+<tr>
+<td>Stamp + registration (8%)</td>
+<td>4.0 L</td>
+</tr>
+<tr>
+<td>Furnishing</td>
+<td>3.0 L</td>
+</tr>
+<tr>
+<td><strong>All-in</strong></td>
+<td><strong>57.0 L</strong></td>
+</tr>
+<tr>
+<td>Base NOI</td>
+<td>2.27 L/yr → <strong>3.9% net yield</strong></td>
+</tr>
+<tr>
+<td>Optimistic NOI</td>
+<td>3.88 L/yr → 6.8%</td>
+</tr>
+<tr>
+<td>Long-term let instead (~₹22k/month, light furnishing)</td>
+<td>≈ 2.4–2.6 L/yr → <strong>≈ 4.3–4.6%</strong>, near-zero effort</td>
+</tr>
+<tr>
+<td>Capital appreciation (assumption)</td>
+<td>5–8%/yr nominal for Vibhuti Khand / Golf City. Recent prints are higher (+24% YoY Vibhuti Khand; +11% QoQ Golf City), but don't underwrite momentum</td>
+</tr>
+<tr>
+<td>With 80% loan</td>
+<td>EMI ≈ ₹35,350 vs base NOI ₹18,887 → <strong>−₹16.5k/month cash flow</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Conclusion:</strong>
+- <strong>In every pocket, buying a studio <em>for STR yield</em> is not justified at 2026 prices.</strong> STR beats a plain long-term let only at top-decile performance. Buying makes sense only as an appreciation bet with STR as a bonus.
+- <strong>Renting works only if rent is ≤ ₹15k</strong> and you hit ≥ 55–60% occupancy. That is achievable for a top-quartile operator, but not guaranteed.</p>
+<h3 id="103-which-model-fits-each-pocket">10.3 Which model fits each pocket</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket</th>
+<th>Rent or buy?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibhuti Khand</td>
+<td><strong>Rent</strong> (if ≤ ₹15–16k furnished/semi). Buying at ₹9,950/sq ft yields ~4%</td>
+</tr>
+<tr>
+<td>Medanta–Lulu</td>
+<td><strong>Rent</strong> a 1BHK/studio at ≤ ₹15k. Buying a commercial studio (Migsun) is a construction-risk appreciation bet only</td>
+</tr>
+<tr>
+<td>Indira Nagar metro</td>
+<td><strong>Rent</strong> (low rents ~₹12–14k, mid-stay strategy). Buying is cheap per sq ft (verify the ₹4,800 figure) and is the only pocket where a purchase could reach ~6%</td>
+</tr>
+<tr>
+<td>Omaxe Hazratganj</td>
+<td><strong>Avoid both</strong> (oversupply). If anything, a long-term let</td>
+</tr>
+<tr>
+<td>SGPGI</td>
+<td><strong>Rent</strong> for monthly medical stays only</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="11-capital-scenarios">11. Capital scenarios</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Capital</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>₹10 L</strong></td>
+<td>Rent 1 studio (pocket #1 or #2). Keep ₹6 L reserve. Learn for 12 months</td>
+</tr>
+<tr>
+<td><strong>₹15 L</strong></td>
+<td><strong>Rent 1 studio in Vibhuti Khand</strong> (₹3.5–4 L). Keep ≥ ₹4 L reserve. Add a 2nd unit in the Medanta–Lulu pocket only after month 4, and only if unit #1 exceeds 50%</td>
+</tr>
+<tr>
+<td><strong>₹20 L</strong></td>
+<td>2 rented units (pockets #1 + #2) with shared housekeeping, plus a ₹6 L reserve. Do not buy</td>
+</tr>
+<tr>
+<td><strong>₹25 L</strong></td>
+<td>2–3 rented units, or co-invest in one purchased studio (50%) and LTR it until data justifies STR</td>
+</tr>
+<tr>
+<td><strong>₹30 L</strong></td>
+<td>3 rented units (scale economics on housekeeping), <em>or</em> down-payment + costs on a ₹45–50 L studio <strong>only if</strong> you accept ~4% yield for appreciation</td>
+</tr>
+<tr>
+<td><strong>₹40 L</strong></td>
+<td>Buy a 1BHK (550–650 sq ft) in Sushant Golf City / Vibhuti Khand fringe at ≤ ₹7,500/sq ft and convert it to a premium studio-style unit, plus 1 rented unit. Still: underwrite at long-term-let yield</td>
+</tr>
+</tbody>
+</table></div>
+<p>Converting a 1BHK to studio style (one large open room plus a work nook) is fine <strong>operationally</strong>. Legally it is the same residential-use question as a studio (§14).</p>
+<hr />
+<h2 id="12-ideal-studio-specification-and-setup-budget">12. Ideal studio specification and setup budget</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>400–550 sq ft carpet (avoid &lt; 320 sq ft: photos look cramped, low ADR)</td>
+</tr>
+<tr>
+<td>Floor</td>
+<td>4th–12th (views, mosquito/noise relief, still DG-backed lifts)</td>
+</tr>
+<tr>
+<td>Building</td>
+<td>≤ 12 years old; gated; 24×7 guards; ≥ 2 lifts; DG backup <strong>covering flat AC</strong>; pool/gym a bonus</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>North/east (cooler in May–June; lowers power bill)</td>
+</tr>
+<tr>
+<td>Bed</td>
+<td>King (6×6.5) with 8" pocket-spring/memory-foam mattress</td>
+</tr>
+<tr>
+<td>Sofa</td>
+<td>3-seater sofa-cum-bed (sells as "sleeps 3")</td>
+</tr>
+<tr>
+<td>Kitchen</td>
+<td>Induction 2-burner, microwave, 190 L fridge, kettle, toaster, RO purifier, cookware for 4</td>
+</tr>
+<tr>
+<td>Bathroom</td>
+<td>Rain shower, geyser 15 L, exhaust, good towels/toiletries</td>
+</tr>
+<tr>
+<td>Balcony</td>
+<td>2 chairs + table + plants</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>4-ft desk + ergonomic chair + lamp</td>
+</tr>
+<tr>
+<td>TV</td>
+<td>55" 4K smart TV with OTT</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>150–200 Mbps fibre + 4G/5G backup router</td>
+</tr>
+<tr>
+<td>AC</td>
+<td>1.5 T 5-star inverter split</td>
+</tr>
+<tr>
+<td>Washing machine</td>
+<td>7 kg front-load (enables mid-stays)</td>
+</tr>
+<tr>
+<td>Smart lock + camera at door (exterior only) + smoke detector + extinguisher</td>
+<td></td>
+</tr>
+<tr>
+<td>Inverter (if DG doesn't cover AC)</td>
+<td></td>
+</tr>
+<tr>
+<td>Décor</td>
+<td>Warm "modern Nawabi": jaali panels, chikankari cushions, brass, a statement wall</td>
+</tr>
+<tr>
+<td>Linen (3 sets), curtains (blackout), lighting, mirrors</td>
+<td></td>
+</tr>
+<tr>
+<td>Photography + listing setup</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total furnishing / setup</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="13-competitor-deep-dive-and-the-winning-formula">13. Competitor deep dive and the winning formula</h2>
+<h3 id="what-top-reviewed-hosts-do-from-the-comp-set">What top-reviewed hosts do (from the comp set)</h3>
+<ol>
+<li><strong>Operate several units in one building</strong> (Arth, Su Casa / Tu Casa, Cestlavie). That gives shared housekeeping, instant backup units and lower cost per turnover.</li>
+<li><strong>Lead the title with location anchors</strong>: "near Ekana / Medanta / Lulu", "500 m from Medanta", "Sec-21 Indiranagar".</li>
+<li><strong>Lead with tangibles</strong>: king bed, 55" TV, pool view, self check-in, kitchenette.</li>
+<li><strong>Human presence</strong>: the highest review counts (Nahil's 399, Bluebell 83) come with a caretaker or daily housekeeping.</li>
+<li><strong>Couple-friendly</strong> explicit positioning. This drives volume, but is also where most RWA friction and bad reviews originate.</li>
+</ol>
+<h3 id="top-20-guest-complaints-synthesised-for-lucknow-budgetmid-strs-l">Top 20 guest complaints (synthesised for Lucknow budget/mid STRs) <span class="cf cf-l">L</span></h3>
+<p>Direct review text was not fetchable. This list is built from the amenities top hosts pre-emptively advertise, the known maintenance issues at DLF MyPad (water purifier and AC breakdowns), and typical Indian STR review themes.</p>
+<ol>
+<li>AC not cooling or breaking down in May–June</li>
+<li>Power cuts or no backup for AC</li>
+<li>Cleanliness (bathroom, bedsheets, hair)</li>
+<li>Hot water / geyser not working</li>
+<li>Wi-Fi slow or dropping</li>
+<li>Check-in confusion (guard denies entry, wrong tower, lock code)</li>
+<li>Guard or RWA harassment, ID demands at the gate</li>
+<li>Photos don't match reality (size, view)</li>
+<li>Mattress uncomfortable</li>
+<li>Noise (corridor parties, construction on Shaheed Path)</li>
+<li>Mosquitoes</li>
+<li>Kitchen missing basics</li>
+<li>Smell or damp (monsoon)</li>
+<li>Parking unavailable or charged</li>
+<li>Host slow to respond</li>
+<li>RO or water quality</li>
+<li>Hidden extra-guest charges</li>
+<li>Towels or toiletries missing</li>
+<li>Blackout curtains missing</li>
+<li>Hard to find the building at night or with cabs</li>
+</ol>
+<h3 id="winning-lucknow-studio-formula">Winning Lucknow Studio Formula</h3>
+<blockquote>
+<p><strong>"Medical-and-corporate-first, couple-safe, never-hot, never-offline."</strong>
+- <strong>Guarantee comfort and connectivity:</strong> DG plus inverter for AC, dual internet, stated in the title.
+- <strong>Make arrival friction-free:</strong> smart lock plus a pre-registered guest pass with building security, and an arrival video sent 24 h before.
+- <strong>Accept couples, but with ID verification and a clear house-rules policy.</strong> That protects you with the RWA and police.
+- <strong>Sell 7- and 28-night stays aggressively</strong> (medical, relocation) to fill weekdays and monsoon. Offer GST invoices for corporates.
+- <strong>Operate 2–3 units in the same building</strong> within 12 months.</p>
+</blockquote>
+<hr />
+<h2 id="14-regulation-society-and-rwa-risk">14. Regulation, society and RWA risk</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Finding</th>
+<th>Conf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>State law: UP Bed &amp; Breakfast and Homestay Policy 2025</strong></td>
+<td>Every existing and new B&amp;B/homestay had to register with UP Tourism by <strong>9 June 2026</strong>. Registration is via a DM- and SP-led committee after local <strong>NOCs</strong>.</td>
+<td>H (<a target="_blank" rel="noopener" href="https://www.outlooktraveller.com/News/uttar-pradesh-homestay-bed-breakfast-policy-to-boost-tourism">Outlook Traveller</a>, <a target="_blank" rel="noopener" href="https://www.thedailyjagran.com/uttar-pradesh/up-cabinet-approves-bed-breakfast-and-homestay-policy-2025-to-boost-tourism-and-local-employment-10242513">Daily Jagran</a>, <a target="_blank" rel="noopener" href="https://organiser.org/2025/06/06/295699/bharat/up-govt-approves-bed-breakfast-tourists-to-get-affordable-stay-options-starting-at-rs-500/">Organiser</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td>Fees: urban Silver ₹2,000, urban Gold ₹3,000.</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>Original caps were 1–6 rooms and 12 beds; a 2026 revision reportedly allows up to 8 rooms and 16 beds.</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td>Guests may stay up to <strong>7 consecutive days</strong>, extendable. This conflicts with a monthly-stay strategy; confirm with UP Tourism.</td>
+<td>M</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Homestay category requires the owner or family to reside in the property.</strong> The B&amp;B category reportedly allows an on-site <strong>caretaker</strong>.</td>
+<td>M (<a target="_blank" rel="noopener" href="https://retailintel.in/signal/up-tightens-compliance-lens-on-airbnb-style-rentals-in-resid-39a4ae91">retailintel summary</a>)</td>
+</tr>
+<tr>
+<td><strong>What that means for you</strong></td>
+<td>A whole studio rented by a non-resident (especially a <em>tenant</em>) does <strong>not cleanly fit either category</strong>. Legally it is closer to an unregistered guest house. <strong>Treat legality as uncertain.</strong> Get a written opinion from a Lucknow lawyer or UP Tourism's district office before signing.</td>
+<td>Conclusion</td>
+</tr>
+<tr>
+<td><strong>Society / RWA</strong></td>
+<td>RWAs can enforce bylaws against hotel-style stays. In Sept 2026 a Ghaziabad society protested flats converted into Airbnbs. Noida's Supernova society banned Airbnb, OYO and Booking.com stays after a security incident.</td>
+<td>H (<a target="_blank" rel="noopener" href="https://www.inkl.com/news/ghaziabad-society-residents-run-hourly-airbnb-stays-from-flats-protest-erupts-can-a-flat-owner-operate-short-term-homestay-under-law">inkl/Ghaziabad</a>, <a target="_blank" rel="noopener" href="https://www.newsx.com/regionals/why-noidas-supernova-society-banned-oyo-airbnb-and-bookingcom-rentals-after-shocking-gate-ramming-incident-278527/">NewsX Noida</a>)</td>
+</tr>
+<tr>
+<td><strong>Lowest-friction buildings</strong></td>
+<td>Mixed-use or commercial serviced-studio projects such as <strong>DLF MyPad</strong> ("residential cum commercial"), <strong>Omaxe Hazratganj studios</strong> ("layouts suitable for hotels and commercial office space") and <strong>Migsun Lucknow Central</strong> (commercial). STR use there is already the norm. Trade-off: commercial electricity tariffs and maintenance.</td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>Lease / landlord</strong></td>
+<td>Standard UP rental agreements prohibit sub-letting. You need an <strong>explicit written clause permitting short-term guest accommodation</strong>, plus landlord co-operation on NOCs.</td>
+<td>H (standard practice)</td>
+</tr>
+<tr>
+<td><strong>Police / guests</strong></td>
+<td>Keep a guest register with government ID. <strong>Foreign guests:</strong> submit Form C to FRRO within 24 h (Indian immigration rules). Police verification of caretaker/staff.</td>
+<td>H (general Indian law)</td>
+</tr>
+<tr>
+<td><strong>GST</strong></td>
+<td>Airbnb pays GST on bookings through it (Sec 9(5)). Direct bookings: 5% if tariff &lt; ₹7,500, registration once turnover exceeds threshold.</td>
+<td>H</td>
+</tr>
+<tr>
+<td><strong>FSSAI</strong></td>
+<td>Only if you serve food/breakfast. Avoid serving food (provide a kitchen instead).</td>
+<td>H</td>
+</tr>
+<tr>
+<td><strong>Fire safety</strong></td>
+<td>The policy requires basic fire safety. Install an extinguisher and smoke detector.</td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>Couple-stay risk</strong></td>
+<td>No law bars adult unmarried couples with valid ID. OYO tightened couple check-ins in some UP cities in 2025 (Meerut). Expect RWA and police sensitivity.</td>
+<td>M</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Bottom line:</strong> in a normal residential society, an STR studio is <strong>legally grey and practically fragile</strong> (one RWA resolution can end it). In a mixed-use serviced-studio building, the practical risk is low and the legal risk is moderate. <strong>Only operate after:</strong> (a) landlord's written STR permission, (b) society/maintenance-agency written no-objection, and (c) UP Tourism registration or a lawyer's written view that your structure is compliant.</p>
+<hr />
+<h2 id="15-safety-and-operations-scores-15-analyst-scored-l">15. Safety and operations scores (1–5, analyst-scored) <span class="cf cf-l">L</span></h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket</th>
+<th>Security</th>
+<th>Late-night access</th>
+<th>Bldg security</th>
+<th>Lift</th>
+<th>Parking</th>
+<th>Power</th>
+<th>Water</th>
+<th>Noise (5 = quiet)</th>
+<th>Complaint risk (5 = low)</th>
+<th>RWA friendliness</th>
+<th>Housekeeping supply</th>
+<th><strong>Avg</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vibhuti Khand (DLF MyPad)</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td><strong>4.1</strong></td>
+</tr>
+<tr>
+<td>Medanta–Lulu (SGC/Ansal)</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td><strong>4.0</strong></td>
+</tr>
+<tr>
+<td>Indira Nagar metro</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+<td><strong>3.2</strong></td>
+</tr>
+<tr>
+<td>GN Ext Sec 4–7</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td><strong>3.7</strong></td>
+</tr>
+<tr>
+<td>Omaxe Hazratganj</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td><strong>3.6</strong></td>
+</tr>
+<tr>
+<td>Hazratganj core</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td><strong>3.0</strong></td>
+</tr>
+<tr>
+<td>Charbagh</td>
+<td>2</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td><strong>2.5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="16-weighted-scoring-model-out-of-100">16. Weighted scoring model (out of 100)</h2>
+<p><strong>Adjusted weights.</strong> I moved 5 points into Regulatory/RWA risk because it can zero out the business. Final weights:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Airbnb demand</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Occupancy potential</td>
+<td>15</td>
+</tr>
+<tr>
+<td>ADR</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Competition</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Acquisition/rent cost</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Tourism/business</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Medical</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Regulatory/RWA</strong></td>
+<td><strong>7</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>All factor scores are 0–10 analyst judgements <span class="cf cf-l">L</span> informed by the evidence above.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pocket</th>
+<th>Dem</th>
+<th>Occ</th>
+<th>ADR</th>
+<th>Rev</th>
+<th>Comp</th>
+<th>Cost</th>
+<th>T/B</th>
+<th>Med</th>
+<th>Trans</th>
+<th>Evt</th>
+<th>Safe</th>
+<th>Reg</th>
+<th><strong>Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vibhuti Khand core</strong></td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+<td>5</td>
+<td>5</td>
+<td>9</td>
+<td>4</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+<td><strong>73</strong></td>
+</tr>
+<tr>
+<td><strong>Medanta–Lulu pocket</strong></td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>7</td>
+<td>5</td>
+<td>10</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>6</td>
+<td><strong>71</strong></td>
+</tr>
+<tr>
+<td><strong>Indira Nagar metro belt</strong></td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>9</td>
+<td>6</td>
+<td>5</td>
+<td>9</td>
+<td>4</td>
+<td>6</td>
+<td>4</td>
+<td><strong>63</strong></td>
+</tr>
+<tr>
+<td>GN Ext Sec 4–7 (excl. Omaxe)</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td><strong>62</strong></td>
+</tr>
+<tr>
+<td>SGPGI / Vrindavan Yojana</td>
+<td>5</td>
+<td>7</td>
+<td>4</td>
+<td>5</td>
+<td>8</td>
+<td>8</td>
+<td>2</td>
+<td>10</td>
+<td>4</td>
+<td>2</td>
+<td>6</td>
+<td>5</td>
+<td><strong>58</strong></td>
+</tr>
+<tr>
+<td>Hazratganj core</td>
+<td>8</td>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+<td>4</td>
+<td>9</td>
+<td>5</td>
+<td>8</td>
+<td>5</td>
+<td>6</td>
+<td>4</td>
+<td><strong>64</strong></td>
+</tr>
+<tr>
+<td>Omaxe Hazratganj</td>
+<td>7</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+<td>8</td>
+<td>7</td>
+<td>7</td>
+<td><strong>54</strong></td>
+</tr>
+<tr>
+<td>Kaiserbagh / Chowk / KGMU</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td><strong>52</strong></td>
+</tr>
+<tr>
+<td>Airport / Kanpur Rd / Ashiyana</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>7</td>
+<td>7</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+<td>3</td>
+<td>6</td>
+<td>5</td>
+<td><strong>47</strong></td>
+</tr>
+<tr>
+<td>Charbagh / Naka</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>10</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td><strong>45</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="final-ranking">Final ranking</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Micro-pocket</th>
+<th>Occupancy potential</th>
+<th>ADR (₹)</th>
+<th>Monthly gross (₹)</th>
+<th>Competition</th>
+<th>Cost to enter</th>
+<th>Net ROI (rent model)</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Vibhuti Khand core (DLF MyPad / Rd 6 / Summit–IGP)</td>
+<td>45–60%</td>
+<td>2,500–3,200</td>
+<td>38k–55k</td>
+<td>High, premium</td>
+<td>Rent ₹13–32k; buy ₹9,950/sq ft</td>
+<td>10–55%</td>
+<td><strong>73</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Medanta–Lulu (SGC Sec A/B, Ansal API, Shaheed Path frontage)</td>
+<td>50–65% (long stays)</td>
+<td>2,000–2,600</td>
+<td>33k–48k</td>
+<td>Medium</td>
+<td>Rent ~₹12–18k; buy ₹7,000–7,600/sq ft</td>
+<td>15–60%</td>
+<td><strong>71</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hazratganj core</td>
+<td>40–55%</td>
+<td>2,400–3,000</td>
+<td>30k–45k</td>
+<td>Low STR / high hotel</td>
+<td>Rent ₹19–29k</td>
+<td>0–30%</td>
+<td><strong>64</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Indira Nagar metro belt (Munshi Pulia–Bhootnath, Sec 11–21)</td>
+<td>45–60% (mid-stays)</td>
+<td>1,700–2,200</td>
+<td>25k–38k</td>
+<td>Med-low</td>
+<td>Rent ~₹12–14k; buy ~₹4,800/sq ft (verify)</td>
+<td>10–45%</td>
+<td><strong>63</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>GN Ext Sec 4–7 (Ekana/Palassio, outside Omaxe)</td>
+<td>40–55%</td>
+<td>2,000–2,600</td>
+<td>26k–40k</td>
+<td>Medium, rising</td>
+<td>₹6,650–7,450/sq ft</td>
+<td>5–40%</td>
+<td>62</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SGPGI / Vrindavan Yojana</td>
+<td>50–65% (monthly)</td>
+<td>1,400–1,900</td>
+<td>24k–33k</td>
+<td>Low</td>
+<td>₹6,500/sq ft</td>
+<td>5–35%</td>
+<td>58</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Omaxe Hazratganj tower</td>
+<td>30–45%</td>
+<td>1,900–3,000</td>
+<td>20k–35k</td>
+<td><strong>Oversupplied</strong></td>
+<td>Rent ₹16–25k; buy ₹38–55 L</td>
+<td>negative–20%</td>
+<td>54</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kaiserbagh / Chowk / KGMU</td>
+<td>35–50%</td>
+<td>1,500–2,200</td>
+<td>—</td>
+<td>Low</td>
+<td>Old stock</td>
+<td>—</td>
+<td>53</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Airport / Kanpur Rd / Ashiyana</td>
+<td>25–40%</td>
+<td>1,600–2,200</td>
+<td>—</td>
+<td>Low</td>
+<td>—</td>
+<td>—</td>
+<td>47</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Charbagh / Naka</td>
+<td>30–45%</td>
+<td>1,300–1,900</td>
+<td>—</td>
+<td>Hotel-saturated</td>
+<td>—</td>
+<td>—</td>
+<td>45</td>
+</tr>
+</tbody>
+</table></div>
+<p>Occupancy, ADR, revenue and ROI ranges are <span class="cf cf-l">L</span>, modelled from the city distribution and comp pricing.</p>
+<ul>
+<li>🥇 <strong>BEST OVERALL: Vibhuti Khand core.</strong> It has the highest indexed studio ADRs (DLF MyPad $49–66 OTA), the deepest year-round mix (corporate + IGP expos + nightlife + weddings), the best walkability, and a mixed-use building where STR is normalised.</li>
+<li>🥈 <strong>BEST HIGH-OCCUPANCY: Medanta–Lulu pocket.</strong> Medical attendants book 5–30 nights with low seasonality. Comps within 500 m of Medanta score 4.97–4.98 with 58–83 reviews. It also has Lulu for convenience and Ekana and HCL IT City upside, and fewer purpose-built studios than demand.</li>
+<li>🥉 <strong>BEST VALUE: Indira Nagar metro belt.</strong> Hazratganj core scores one point higher (64 vs 63) on demand, but it fails the rent model: furnished rents run ₹19–29k, studio stock is scarce, the buildings are old and parking is poor. Indira Nagar is therefore the actionable #3.
+  Why Indira Nagar: It has the cheapest entry, direct metro to Charbagh, Hazratganj and the airport, under-served mid-stay and relocation demand, and pro operators already proving it (Cestlavie Sec-21, 4.83★; Nahil's, 4.95★/399). Its main weakness is RWA friendliness in older societies; pick gated towers only.</li>
+</ul>
+<hr />
+<h2 id="17-buy-this-not-that-the-broker-brief">17. "Buy this, not that": the broker brief</h2>
+<p><strong>Tell the broker:</strong></p>
+<blockquote>
+<p>"Show me <strong>furnished or semi-furnished studios / 1RK of 400–550 sq ft carpet</strong> in <strong>DLF MyPad, Vibhuti Khand Road 6</strong>, or any gated tower within <strong>1 km of Summit Building / One Awadh Center / Indira Gandhi Pratishthan</strong>. <strong>Rent ≤ ₹15,000/month</strong> (stretch ₹16,000 with AC + kitchen). Floor 4–12, pool/garden view, DG backup that runs the AC. The landlord must sign a <strong>written clause permitting short-term guest stays</strong>, and the maintenance agency must give a written no-objection."</p>
+</blockquote>
+<p><strong>Second brief (Medanta–Lulu):</strong></p>
+<blockquote>
+<p>"Studios or compact 1BHKs in <strong>Sushant Golf City Sector A/B or Ansal API</strong>, within <strong>1.5 km driving / 15 min walking of Medanta Hospital's main gate</strong> and within 2 km of Lulu Mall. <strong>Rent ≤ ₹15,000</strong> (1BHK ≤ ₹17,000). Lift, guard, covered parking."</p>
+</blockquote>
+<p><strong>Third brief (Indira Nagar):</strong></p>
+<blockquote>
+<p>"Gated apartment studios / 1BHKs <strong>within 600 m of Munshi Pulia, Indira Nagar or Bhootnath metro</strong>. <strong>Rent ≤ ₹13,000.</strong> No independent-house floors."</p>
+</blockquote>
+<p><strong>Avoid:</strong>
+- Omaxe Hazratganj studios (oversupply, price war at ₹1,900–3,000)
+- Anything &gt; 2 km off Shaheed Path inside Sushant Golf City's interior sectors
+- Old-city lanes (Chowk/Aminabad) without a lift or parking
+- Charbagh hotel belt
+- Independent-house floors where the owner lives downstairs (complaints)
+- Under-construction "assured return" studios (Migsun etc.) as an STR play before possession</p>
+<p><strong>Hard limits:</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Max rent</td>
+<td><strong>₹15–16k</strong> (Vibhuti Khand), <strong>₹15k</strong> (Medanta–Lulu), <strong>₹13k</strong> (Indira Nagar)</td>
+</tr>
+<tr>
+<td>Max purchase price, if you buy anyway</td>
+<td><strong>≤ ₹42 L all-in</strong> for ≥ 450 sq ft carpet in Vibhuti Khand (≈ ₹8,500/sq ft carpet) or <strong>≤ ₹35 L</strong> in Golf City. This is the level where base-case NOI reaches ~5.5–6.5%</td>
+</tr>
+<tr>
+<td>Min ADR</td>
+<td><strong>₹2,400</strong> (Vibhuti Khand) / ₹2,000 (Medanta–Lulu) / ₹1,700 (Indira Nagar)</td>
+</tr>
+<tr>
+<td>Min occupancy</td>
+<td><strong>55%</strong> trailing-90-day by month 4. If below 40% at month 6, exit</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="18-direct-answers">18. Direct answers</h2>
+<ol>
+<li><strong>With ₹15 lakh, where do I start?</strong> Rent one premium studio in <strong>Vibhuti Khand (DLF MyPad / Road 6 pocket)</strong>. Spend ≈ ₹3.5–4 L, and keep ₹4 L+ in reserve. Hold ₹7 L uncommitted for unit #2 (Medanta–Lulu) once unit #1 proves itself.</li>
+<li><strong>Rent or buy?</strong> <strong>Rent.</strong> At ₹50–60 L asks, an owned studio's base-case STR yield (~3.9%) is <em>below</em> a long-term let.</li>
+<li><strong>Exact micro-pocket?</strong> The 1 km radius around <strong>DLF MyPad, Vibhuti Khand Road 6, Gomti Nagar</strong>, bounded by Summit Building, One Awadh Center, IGP and Gomti Nagar railway station.</li>
+<li><strong>Max monthly rent?</strong> <strong>₹15,000</strong> (₹16,000 only for pool-view, fully furnished, with backup AC).</li>
+<li><strong>Max purchase price?</strong> <strong>₹42 L all-in</strong> (≥ 450 sq ft carpet) — and only after 12 months of your own data.</li>
+<li><strong>Min ADR?</strong> <strong>₹2,400</strong>; target <strong>₹2,600</strong> blended. Peak months ₹2,800+, IPL nights ₹4,000+.</li>
+<li><strong>Realistic occupancy?</strong> <strong>35–45% in months 1–3, 50–55% by month 6</strong> if executed as a top-quartile product. The city median is about 20%.</li>
+<li><strong>Annual revenue target?</strong> <strong>≈ ₹4.7 L gross</strong> (₹39.5k/month avg).</li>
+<li><strong>Net profit target?</strong> Rent model: <strong>≥ ₹1.2 L/yr</strong> (₹10k/month) to be worth your time. That requires ~60% occupancy at ₹15k rent.</li>
+<li><strong>Payback?</strong> Base ≈ 4–7 yrs (not acceptable). Target ≤ 24 months; if month-6 data projects &gt; 30 months, exit and recover furniture.</li>
+<li><strong>Reject immediately if:</strong><ul>
+<li>no DG backup for the flat</li>
+<li>no lift above the 2nd floor</li>
+<li>the landlord refuses a written STR clause</li>
+<li>the RWA has bylaws against STR</li>
+<li>the unit is &lt; 320 sq ft</li>
+<li>it has no kitchenette</li>
+<li>it is ground floor facing a road</li>
+<li>it is in Omaxe Hazratganj</li>
+<li>rent is &gt; ₹16k</li>
+<li>it is in an independent house with the owner on site</li>
+<li>there is no 24×7 guard</li>
+</ul>
+</li>
+<li><strong>Biggest risks:</strong><ul>
+<li>(a) supply growth / ADR deflation (+164% supply, −40% ADR YoY)</li>
+<li>(b) legal and RWA shutdown (Homestay policy's owner-residence rule; society bans in Noida and Ghaziabad)</li>
+<li>(c) summer power and AC failures driving bad reviews</li>
+<li>(d) couple-segment reputation and police friction</li>
+<li>(e) your own time: STR in Lucknow only works when run hands-on</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="19-do-not-invest-if">19. DO NOT INVEST IF…</h2>
+<ul>
+<li>The society or RWA has a written ban, or a pending resolution, on short stays, OYO or Airbnb.</li>
+<li>The landlord won't sign an STR clause, or the lease forbids sub-letting / commercial use.</li>
+<li>The building has no 24×7 guard, CCTV or controlled gate, or the guards are hostile to visitors.</li>
+<li>Maintenance is &gt; ₹5,000/month on a studio, or the building is on a commercial electricity meter <em>and</em> rent is &gt; ₹13k.</li>
+<li>The unit is a 3rd floor or higher walk-up, or reached through a narrow lane where cabs can't stop.</li>
+<li>Parking is not available for at least one car.</li>
+<li>The DG doesn't run the AC, or the area has documented frequent outages.</li>
+<li>Your target building already has ≥ 10 active studio listings priced under ₹2,500 (the Omaxe Hazratganj pattern).</li>
+<li>Comparable listings in the building average &lt; 4.5★ or show "dirty / AC / water" complaints you can't fix structurally.</li>
+<li>The achievable ADR (from 5 comps within 500 m) is &lt; ₹2,000.</li>
+<li>You cannot obtain UP Tourism registration, or a lawyer's written view that your structure is compliant.</li>
+<li>The surrounding area is mid-construction (metro or road works) for the next 12 months. Check the East-West metro alignment for old-city pockets.</li>
+<li>You intend to run it remotely without a paid co-host. That adds ~20% cost and pushes the base case to break-even.</li>
+</ul>
+<hr />
+<h2 id="20-source-list">20. Source list</h2>
+<ul>
+<li>AirROI Lucknow STR report (Aug 2025–Jul 2026): https://www.airroi.com/airbnb-data/india/uttar-pradesh/lucknow</li>
+<li>AirDNA Lucknow (indexed): https://www.airdna.co/top/in/lucknow</li>
+<li>Airbnb Gomti Nagar / Lucknow / Lulu Mall pages and individual listings (cited inline in §2.3)</li>
+<li>Horwath HTL India Hotel Market Review 2024 &amp; 2025: https://horwathhtl.com/publication/india-hotel-market-review-2025/</li>
+<li>99acres, SquareYards, MagicBricks (via 99acres extracts), RealtyAssistant, Migsun (cited inline in §9)</li>
+<li>UP stamp duty: https://homefirstindia.com/blog/article/stamp-duty-and-registration-charges-uttar-pradesh</li>
+<li>UPPCL tariff: https://billunits.in/state-calculators/uppcl-calculator/</li>
+<li>GST on accommodation from 22 Sep 2025: https://taxguru.in/goods-and-service-tax/gst-rate-hotels-restaurants-effective-22nd-september-2025.html</li>
+<li>UP B&amp;B and Homestay Policy 2025: https://www.outlooktraveller.com/News/uttar-pradesh-homestay-bed-breakfast-policy-to-boost-tourism · https://www.thedailyjagran.com/uttar-pradesh/up-cabinet-approves-bed-breakfast-and-homestay-policy-2025-to-boost-tourism-and-local-employment-10242513 · https://retailintel.in/signal/up-tightens-compliance-lens-on-airbnb-style-rentals-in-resid-39a4ae91</li>
+<li>Society actions: https://www.newsx.com/regionals/why-noidas-supernova-society-banned-oyo-airbnb-and-bookingcom-rentals-after-shocking-gate-ramming-incident-278527/ · https://www.inkl.com/news/ghaziabad-society-residents-run-hourly-airbnb-stays-from-flats-protest-erupts-can-a-flat-owner-operate-short-term-homestay-under-law</li>
+<li>Airport traffic: https://en.wikipedia.org/wiki/Chaudhary_Charan_Singh_International_Airport</li>
+<li>Lucknow Metro East-West: https://en.wikipedia.org/wiki/Lucknow_Metro · https://indianmasterminds.com/news/up-approves-5801-crore-lucknow-metro-phase-1b-east-west-corridor-205291/</li>
+<li>IPL 2026 LSG fixtures: https://en.wikipedia.org/wiki/2026_Lucknow_Super_Giants_season</li>
+<li>Events: https://en.wikipedia.org/wiki/Lucknow_Mahotsav · https://10times.com/medical-expo-lucknow</li>
+<li>Wedding muhurats: https://www.indianweddingplanners.in/Blogs/Auspicious-Hindu-Wedding-Dates-2025-2026</li>
+</ul>
+<p><em>Sources not accessible in this run:</em> Inside Airbnb (no Lucknow dataset known), PriceLabs, KeyData, Lighthouse, Transparent, Mashvisor, Rabbu (no India data), Booking.com / Agoda / MMT listing-level pages, and Google Maps POI counts. These are the first things to buy or pull before you sign.</p>
+      <footer>Data gathered from search-engine extracts of AirROI, AirDNA, Airbnb, 99acres, SquareYards, Horwath HTL, UP government and news sources in October 2026. Direct page access and paid STR tools were unavailable, so listing-level occupancy is estimated, never observed. Verify before committing capital.</footer>
+    </main>
+  </div>
+</div>
